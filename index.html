@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RR-TS-RHL</title>
+    <style>
+      body, html{
+        margin:0;
+        padding:0;
+        width:100vw;
+        height:100vh;
+      }
+      .img{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        width:100vw;
+        height:100vh;
+        transition:opacity 0.1s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="react-container"></div>
+    <script src="jquery-3.1.0.js"></script>
+    <script src="dist/vendor.bundle.js"></script>
+    <script src="dist/bundle.js"></script>
+    <script>
+      let imgIndex = 0;
+      $(document).on("keypress", (e)=>{
+        if( e.key === "a" ){
+          imgIndex -= 1;
+        }
+        if( e.key === "d" ){
+          imgIndex += 1;
+        }
+        if( e.key === "w" ){
+          imgIndex += 9;
+        }
+        if( e.key === "s" ){
+          imgIndex -= 9;
+        }
+        if( imgIndex > (9*7)-1 ){
+          imgIndex -= 9*7;
+        }
+        if( imgIndex < 0 ){
+          imgIndex += 9*7;
+        }
+        console.log( imgIndex );
+        $(".img").css("opacity", 0);
+        $(".img-"+imgIndex).css("opacity", 1);
+      })
+    </script>
+  </body>
+</html>
